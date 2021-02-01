@@ -1,0 +1,31 @@
+{
+	"name": "auth",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+    // "start": "node server",
+    // "server":"nodemon server"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"nodemon": "^2.0.7"
+	},
+	"dependencies": {
+		"bcrypt": "^5.0.0",
+		"cloudinary": "^1.24.0",
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-fileupload": "^1.2.1",
+		"googleapis": "^67.0.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.11.14",
+		"node-fetch": "^2.6.1",
+		"nodemailer": "^6.4.17"
+	}
+}
