@@ -8,7 +8,6 @@ const { file } = require('googleapis/build/src/apis/file');
 const connectDB = require('./config/db.js');
 
 // config
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -21,6 +20,9 @@ app.use(
 
 // DB config
 connectDB();
+
+// routes
+app.use('/user', require('./routes/userRouter'));
 
 app.use('/', (req, res, next) => {
 	res.json({ msg: 'Hello everyone' });
