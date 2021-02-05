@@ -1,5 +1,5 @@
-const { findOne } = require('../models/userModel');
 const User = require('../models/userModel');
+const sendEmail = require('./sendMail');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -37,7 +37,7 @@ const userCtrl = {
 			const activation_token = createActivationToken(newUser);
 
 			const url = `${CLIENT_URL}/user/activate/${activation_token}`;
-
+			sendEmail(email, url, 'Verify your email address');
 			console.log(activation_token);
 		} catch (error) {
 			return res.status(500).json({ msg: error.message });
