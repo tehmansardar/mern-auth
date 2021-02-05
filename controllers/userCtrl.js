@@ -39,8 +39,32 @@ const userCtrl = {
 			const url = `${CLIENT_URL}/user/activate/${activation_token}`;
 			sendEmail(email, url, 'Verify your email address');
 			console.log(activation_token);
+			res.json({
+				msg: 'Registered Successfully, Please activate email to start',
+			});
 		} catch (error) {
 			return res.status(500).json({ msg: error.message });
+		}
+	},
+	activateEmail: async (req, res) => {
+		try {
+			const { activation_token } = req.body;
+			const user = jwt.verify(
+				activation_token,
+				process.env.ACTIVATION_TOKEN_SECRET
+			);
+			const { name, email, password } = user;
+
+			const check = await User.findOne({ email });
+			if (check)
+				return res.status(400).json({ msg: 'This email already exists' });
+
+			const newUser = new User({ name, email, password });
+			await newUser.save();
+			res.status(201).json({ msg: 'Account has been activated!' });
+		} catch (error) {
+			console.error(error);
+			res.status(500).json({ msg: error.message });
 		}
 	},
 };
