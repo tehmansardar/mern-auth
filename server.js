@@ -25,7 +25,7 @@ connectDB();
 app.use('/user', require('./routes/userRouter'));
 
 app.use('/', (req, res, next) => {
-	res.json({ msg: 'Hello everyone' });
+	res.json({ msg: '/**/' });
 });
 
 const PORT = process.env.PORT || 5000;
