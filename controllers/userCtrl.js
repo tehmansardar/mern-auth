@@ -146,6 +146,15 @@ const userCtrl = {
 			return res.status(500).json({ msg: error.message });
 		}
 	},
+	getAllUserInfor: async (req, res) => {
+		try {
+			const users = await User.find().select('-password');
+
+			res.json(users);
+		} catch (error) {
+			return res.status(500).json({ msg: error.message });
+		}
+	},
 };
 
 function validateEmail(email) {
