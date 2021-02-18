@@ -135,7 +135,15 @@ const userCtrl = {
 			);
 			return res.json({ msg: 'Password changed successfully!' });
 		} catch (error) {
-			res.status(500).json({ msg: error.message });
+			return res.status(500).json({ msg: error.message });
+		}
+	},
+	getUserInfor: async (req, res) => {
+		try {
+			const user = await User.findById(req.user.id).select('-password');
+			res.json(user);
+		} catch (error) {
+			return res.status(500).json({ msg: error.message });
 		}
 	},
 };
