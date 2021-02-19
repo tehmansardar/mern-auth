@@ -20,4 +20,6 @@ router.get('/infor', auth, userCtrl.getUserInfor);
 
 router.get('/all_infor', auth, authAdmin, userCtrl.getAllUserInfor);
 
+router.get('/logout', userCtrl.logout);
+
 module.exports = router;
