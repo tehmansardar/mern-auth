@@ -163,6 +163,15 @@ const userCtrl = {
 			return res.status(500).json({ msg: error.message });
 		}
 	},
+	updateUser: async (req, res) => {
+		try {
+			const { name, avatar } = req.body;
+			await User.findOneAndUpdate({ _id: req.user.id }, { name, avatar });
+			return res.json({ msg: 'Updated successfully!' });
+		} catch (error) {
+			return res.status(500).json({ msg: error.message });
+		}
+	},
 };
 
 function validateEmail(email) {

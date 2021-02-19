@@ -22,4 +22,6 @@ router.get('/all_infor', auth, authAdmin, userCtrl.getAllUserInfor);
 
 router.get('/logout', userCtrl.logout);
 
+router.patch('/update', auth, userCtrl.updateUser);
+
 module.exports = router;
