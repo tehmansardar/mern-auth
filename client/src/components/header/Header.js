@@ -11,7 +11,7 @@ const Header = () => {
 			<ul>
 				<li>
 					<Link to='/'>
-						<i class='fas fa-shopping-cart'></i>Cart
+						<i className='fas fa-shopping-cart'></i>Cart
 					</Link>
 				</li>
 				<li>

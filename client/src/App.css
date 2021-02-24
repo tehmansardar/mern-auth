@@ -20,3 +20,6 @@ button {
 
 /* ----------- Header ---------------------- */
 @import url('./components/header/header.css');
+
+/* ---------------- auth -------------------------- */
+@import url('./components/body/auth/auth.css');
