@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
+
+import { dispatchLogin } from '../../../redux/actions/authActions';
+import { useDispatch } from 'react-redux';
 
 import {
 	showErrMsg,
@@ -18,6 +21,9 @@ const Login = () => {
 	const [user, setUser] = useState(initialState);
 	const { email, password, err, success } = user;
 
+	const dispatch = useDispatch();
+	const history = useHistory();
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 
@@ -30,6 +36,9 @@ const Login = () => {
 			const res = await axios.post('/user/login', { email, password });
 			setUser({ ...user, err: '', success: res.data.msg });
 			localStorage.setItem('firstLogin', true);
+
+			dispatch(dispatchLogin());
+			history.push('/');
 		} catch (err) {
 			err.response.data.msg &&
 				setUser({ ...user, err: err.response.data.msg, success: '' });
