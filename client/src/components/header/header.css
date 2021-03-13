@@ -21,3 +21,32 @@ header ul li {
 header ul li:hover {
 	opacity: 1;
 }
+
+header ul li .avatar img {
+	height: 30px;
+	width: 30px;
+	transform: translateY(10px);
+	border-radius: 50%;
+}
+
+/* -------- Dropdown -------- */
+
+.drop-nav {
+	position: relative;
+	padding: 10px 0;
+}
+.drop-nav a {
+	text-transform: capitalize;
+	overflow: hidden;
+}
+.drop-nav .dropdown {
+	position: absolute;
+	background: #282c34;
+	width: 100%;
+	width: calc(100% + 30px);
+	top: 50px;
+	display: none;
+}
+.drop-nav:hover .dropdown {
+	display: block;
+}
