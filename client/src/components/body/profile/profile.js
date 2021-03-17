@@ -47,7 +47,11 @@ const Profile = () => {
 			if (file.size > 1024 * 1024)
 				return setData({ ...data, err: 'Size too large.', success: '' });
 
-			if (file.type !== 'image/jpeg' && file.type !== 'image/png')
+			if (
+				file.type !== 'image/jpeg' &&
+				file.type !== 'image/jpg' &&
+				file.type !== 'image/png'
+			)
 				return setData({
 					...data,
 					err: 'File format is incorrect.',
@@ -94,24 +98,25 @@ const Profile = () => {
 		if (isLength(password))
 			return setData({
 				...data,
-				err: 'Password must be atleast 6 characters',
+				err: 'Password must be at least 6 characters.',
 				success: '',
 			});
 
 		if (!isMatch(password, cf_password))
-			return setData({ ...data, err: 'Password did not match', success: '' });
+			return setData({ ...data, err: 'Password did not match.', success: '' });
 
 		try {
-			axios.patch(
+			axios.post(
 				'/user/reset',
 				{ password },
 				{
 					headers: { Authorization: token },
 				}
 			);
-			setData({ ...data, err: '', success: 'Updated success' });
-		} catch (error) {
-			setData({ ...data, err: error.response.data.msg, success: '' });
+
+			setData({ ...data, err: '', success: 'Updated Success!' });
+		} catch (err) {
+			setData({ ...data, err: err.response.data.msg, success: '' });
 		}
 	};
 
