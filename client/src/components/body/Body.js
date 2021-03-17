@@ -9,6 +9,7 @@ import ActivationEmail from './auth/ActivationEmail';
 import NotFound from '../utils/NotFound/NotFound';
 import ForgotPassword from './auth/forgotPassword';
 import ResetPassword from './auth/ResetPassword';
+import Profile from './profile/profile';
 
 const Body = () => {
 	const auth = useSelector((state) => state.auth);
@@ -31,6 +32,12 @@ const Body = () => {
 				<Route
 					path='/user/reset/:token'
 					component={isLogged ? NotFound : ResetPassword}
+					exact
+				/>
+
+				<Route
+					path='/profile'
+					component={isLogged ? Profile : NotFound}
 					exact
 				/>
 
