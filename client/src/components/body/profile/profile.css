@@ -113,3 +113,24 @@
 	background: #555;
 	color: #fff;
 }
+.customers i {
+	cursor: pointer;
+}
+.customers .fa-check {
+	color: green;
+}
+.customers .fa-times {
+	color: red;
+}
+.customers .fa-edit {
+	background: whitesmoke;
+	color: #555;
+	padding: 7px;
+	font-size: 10px;
+}
+.customers .fa-trash-alt {
+	background: red;
+	color: #fff;
+	padding: 7px;
+	font-size: 10px;
+}
